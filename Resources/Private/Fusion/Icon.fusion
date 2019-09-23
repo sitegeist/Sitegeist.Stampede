@@ -2,6 +2,7 @@ prototype(Sitegeis.Hieroglyph:Icon) < prototype(Neos.Fusion:Component) {
 
     set = 'default'
     class = 'icon'
+    style = 'enable-background:new 0 0 512 512; fill: currentColor; height: 1em'
     name = null
 
     renderer = afx`
@@ -13,9 +14,9 @@ prototype(Sitegeis.Hieroglyph:Icon) < prototype(Neos.Fusion:Component) {
             x="0px"
             y="0px"
             viewBox="0 0 512 512"
-            style="enable-background:new 0 0 512 512;"
             xml:space="preserve"
             class={props.class}
+            style={props.style}
         >
             <use>
                 <Neos.Fusion:UriBuilder @path='attributes.xlink:href' package="Sitegeist.Hieroglyph" controller="Svg" action="sprite" arguments={{iconSet:props.set}} section={props.name} />
