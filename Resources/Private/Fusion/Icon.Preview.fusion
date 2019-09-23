@@ -1,0 +1,32 @@
+prototype(Sitegeis.Hieroglyph:Icon.Preview) < prototype(Neos.Fusion:Component) {
+    @styleguide {
+        title = "Icon Overview"
+    }
+
+    allSets = ${Hieroglyph.allSets()}
+
+    renderer = afx`
+        <h1>all Icons</h1>
+        <table>
+            <Neos.Fusion:Loop items={props.allSets} itemName="iconSet">
+                <tr>
+                    <th colspan="4">{iconSet.name}</th>
+                </tr>
+                <Neos.Fusion:Loop items={iconSet.icons} itemName="icon">
+                <tr>
+                    <td style="padding: 10px;">{icon.name}</td>
+                    <td style="padding: 10px;">
+                        <Sitegeis.Hieroglyph:Icon set={iconSet.name} name={icon.name} />
+                    </td>
+                    <td style="padding: 10px; color: white; background-color: black;">
+                        <Sitegeis.Hieroglyph:Icon set={iconSet.name} name={icon.name} />
+                    </td>
+                    <td style="padding: 10px; color: white; background-color: grey;">
+                        <Sitegeis.Hieroglyph:Icon set={iconSet.name} name={icon.name} />
+                    </td>
+                </tr>
+                </Neos.Fusion:Loop>
+            </Neos.Fusion:Loop>
+        </table>
+    `
+}

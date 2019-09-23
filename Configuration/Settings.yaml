@@ -1,0 +1,19 @@
+Sitegeist:
+  Hieroglyph:
+    iconSets:
+      sitegeistde: resource://Sitegeist.SitegeistDe/Private/Icons
+
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        Sitegeist.Hieroglyph: true
+  Fusion:
+    defaultContext:
+      Hieroglyph: Sitegeist\Hieroglyph\Eel\IconHelper
+  Flow:
+    mvc:
+      routes:
+        'Sitegeist.Hieroglyph':
+          position: 'before Neos.Neos'
+

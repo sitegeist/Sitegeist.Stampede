@@ -1,0 +1,11 @@
+##
+# Hieroglyph
+-
+  name:  'Hieroglyph-SvgSprite'
+  uriPattern: 'hieroglyph/svgsprite'
+  defaults:
+    '@package':    'Sitegeist.Hieroglyph'
+    '@controller': 'Svg'
+    '@action':     'sprite'
+  httpMethods: ['GET']
+  appendExceedingArguments: TRUE

@@ -1,0 +1,19 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "sitegeist/hieroglyph",
+    "require": {
+        "neos/fusion": "~4.3 || dev-master",
+        "neos/fusion-afx": "~1.3 || dev-mater"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sitegeist\\Hieroglyph\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Sitegeist.Hieroglyph"
+        }
+    }
+}
