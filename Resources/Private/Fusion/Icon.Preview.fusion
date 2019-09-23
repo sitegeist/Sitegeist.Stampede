@@ -16,13 +16,13 @@ prototype(Sitegeis.Hieroglyph:Icon.Preview) < prototype(Neos.Fusion:Component) {
                 <tr>
                     <td style="padding: 10px;">{icon.name}</td>
                     <td style="padding: 10px;">
-                        <Sitegeis.Hieroglyph:Icon set={iconSet.name} name={icon.name} />
+                        <Sitegeis.Hieroglyph:Icon identifier={iconSet.name + ':' + icon.name} />
                     </td>
-                    <td style="padding: 10px; color: white; background-color: black;">
-                        <Sitegeis.Hieroglyph:Icon set={iconSet.name} name={icon.name} />
+                    <td style="padding: 10px; color: grey; background-color: black;">
+                        <Sitegeis.Hieroglyph:Icon identifier={iconSet.name + ':' + icon.name} />
                     </td>
                     <td style="padding: 10px; color: white; background-color: grey;">
-                        <Sitegeis.Hieroglyph:Icon set={iconSet.name} name={icon.name} />
+                        <Sitegeis.Hieroglyph:Icon identifier={iconSet.name + ':' + icon.name} />
                     </td>
                 </tr>
                 </Neos.Fusion:Loop>

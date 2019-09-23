@@ -6,6 +6,7 @@ use Neos\Neos\Service\DataSource\AbstractDataSource;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Neos\Utility\Files;
 use Sitegeist\SitegeistDe\Eel\IconHelper;
+use Sitegeist\Hieroglyph\Domain\IconSetRepository;
 
 class IconDataSource extends AbstractDataSource
 {
@@ -14,7 +15,11 @@ class IconDataSource extends AbstractDataSource
      */
     protected static $identifier = 'sitegeist-hieroglyph-icons';
 
-
+    /**
+     * @var IconSetRepository
+     * @Flow\Inject
+     */
+    protected $iconSetRepository;
 
     /**
      * Get data
@@ -27,15 +32,20 @@ class IconDataSource extends AbstractDataSource
     {
         $result = [];
 
-//        // find all svg files and extract the names
-//        $iconNames = $this->iconHelper->getAvailableNames();
-//        foreach ($iconNames as $iconName) {
-//            // ignore files that start with underscore
-//            if ($iconName[0] == '_') {
-//                continue;
-//            }
-//            $result[] = ['value' => $iconName, 'label' => $iconName];
-//        }
+        if (array_key_exists('iconSets', $arguments) && !empty($arguments['iconSets'])) {
+            $iconSets = [];
+            foreach ($arguments['iconSets'] as $iconSet) {
+                $iconSets[] = $this->iconSetRepository->findOneByName($iconSet);
+            }
+        } else {
+            $iconSets = $this->iconSetRepository->findAll();
+        }
+
+        foreach ($iconSets as $iconSet) {
+            foreach ($iconSet->findAll() as $icon) {
+                $result[] = ['value' => $iconSet->getName() . ':' . $icon->getName(), 'label' => $icon->getName() . ' (' . $iconSet->getName() . ')'];
+            }
+        }
 
         return $result;
     }

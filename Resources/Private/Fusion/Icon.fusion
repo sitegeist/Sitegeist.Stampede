@@ -1,13 +1,14 @@
 prototype(Sitegeis.Hieroglyph:Icon) < prototype(Neos.Fusion:Component) {
 
-    set = 'default'
+    identifier = null
     class = 'icon'
     style = 'enable-background:new 0 0 512 512; fill: currentColor; height: 1em'
-    name = null
+
+    _parts = ${String.split(this.identifier, ':', 2)}
 
     renderer = afx`
         <svg
-            @if.has={props.name}
+            @if.has={props.identifier}
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -19,8 +20,8 @@ prototype(Sitegeis.Hieroglyph:Icon) < prototype(Neos.Fusion:Component) {
             style={props.style}
         >
             <use>
-                <Neos.Fusion:UriBuilder @path='attributes.xlink:href' package="Sitegeist.Hieroglyph" controller="Svg" action="sprite" arguments={{iconSet:props.set}} section={props.name} />
-                <Neos.Fusion:UriBuilder @path='attributes.href' package="Sitegeist.Hieroglyph" controller="Svg" action="sprite" arguments={{iconSet:props.set}} section={props.name} />
+                <Neos.Fusion:UriBuilder @path='attributes.xlink:href' package="Sitegeist.Hieroglyph" controller="Svg" action="sprite" arguments={{iconSet:props._parts[0]}} section={props._parts[1]} />
+                <Neos.Fusion:UriBuilder @path='attributes.href' package="Sitegeist.Hieroglyph" controller="Svg" action="sprite" arguments={{iconSet:props._parts[0]}} section={props._parts[1]} />
             </use>
         </svg>
     `
