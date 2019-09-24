@@ -26,8 +26,8 @@ class IconCollectionRepository
      */
     public function initializeObject()
     {
-        foreach ($this->configuration['collections'] as $name => $path) {
-            $this->iconCollections[$name] = new IconCollection($name, $path);
+        foreach ($this->configuration['collections'] as $identifier => $collection) {
+            $this->iconCollections[$identifier] = new IconCollection($identifier, $collection['label'], $collection['path']);
         }
     }
 
@@ -42,8 +42,8 @@ class IconCollectionRepository
     /**
      * @return IconCollection|null
      */
-    public function findOneByName($name): ?IconCollection
+    public function findOneByIdentifier($identifier): ?IconCollection
     {
-        return $this->iconCollections[$name] ?? null;
+        return $this->iconCollections[$identifier] ?? null;
     }
 }

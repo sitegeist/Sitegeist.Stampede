@@ -21,7 +21,9 @@ The package manages icon collections that are added via settings.
 Sitegeist:
   Stampede:
     collections:
-      example: resource://Vendor.Site/Private/Icons
+      example: 
+        label: "Example"
+        path: resource://Vendor.Site/Private/Icons
 ```
 
 allow to select icons in a NodeType:

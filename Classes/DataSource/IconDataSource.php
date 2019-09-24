@@ -4,6 +4,7 @@ namespace Sitegeist\Stampede\DataSource;
 use Neos\Flow\Annotations as Flow;
 use Neos\Neos\Service\DataSource\AbstractDataSource;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
+use Sitegeist\Stampede\Domain\IconCollection;
 use Sitegeist\Stampede\Domain\IconCollectionRepository;
 
 class IconDataSource extends AbstractDataSource
@@ -31,9 +32,12 @@ class IconDataSource extends AbstractDataSource
         $result = [];
 
         if (array_key_exists('collections', $arguments) && !empty($arguments['collections'])) {
+            /**
+             * @var IconCollection[]
+             */
             $iconCollections = [];
             foreach ($arguments['collections'] as $iconCollection) {
-                $collection = $this->iconCollectionRepository->findOneByName($iconCollection);
+                $collection = $this->iconCollectionRepository->findOneByIdentifier($iconCollection);
                 if ($collection) {
                     $iconCollections[] = $collection;
                 }
@@ -44,7 +48,12 @@ class IconDataSource extends AbstractDataSource
 
         foreach ($iconCollections as $iconCollection) {
             foreach ($iconCollection->findAll() as $icon) {
-                $result[] = ['value' => $iconCollection->getName() . ':' . $icon->getName(), 'label' => $icon->getName() . ' (' . $iconCollection->getName() . ')'];
+                $result[] = [
+                    'group' => $iconCollection->getLabel(),
+                    'value' => $icon->getIdentifier(),
+                    'icon' => $icon->getIdentifier(),
+                    'label' => $icon->getLabel()
+                ];
             }
         }
 

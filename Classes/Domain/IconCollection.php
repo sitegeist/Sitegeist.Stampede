@@ -9,7 +9,12 @@ class IconCollection
     /**
      * @var string
      */
-    protected $name;
+    protected $identifier;
+
+    /**
+     * @var string
+     */
+    protected $label;
 
     /**
      * @var string
@@ -26,23 +31,33 @@ class IconCollection
      * @param string $name
      * @param string $path
      */
-    public function __construct(string $name, string $path)
+    public function __construct(string $identifier, string $label, string $path)
     {
-        $this->name = $name;
+        $this->identifier = $identifier;
+        $this->label = $label;
         $this->path = $path;
         $svgFiles = Files::readDirectoryRecursively($path, 'svg');
         foreach ($svgFiles as $svgFile) {
             $name = substr($svgFile, strlen($path) + 1, strlen($svgFile) - strlen($path) - 5);
-            $this->icons[$name] = new Icon($name, $svgFile);
+            $label = $name;
+            $this->icons[$name] = new Icon($this->identifier, $name, $label, $svgFile);
         }
     }
 
     /**
      * @return string
      */
-    public function getName(): string
+    public function getIdentifier(): string
     {
-        return $this->name;
+        return $this->identifier;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLabel(): string
+    {
+        return $this->label;
     }
 
     /**
@@ -67,14 +82,5 @@ class IconCollection
     public function findAll(): array
     {
         return $this->icons;
-    }
-
-    /**
-     * @param string $name
-     * @return Icon|null
-     */
-    public function findOneByName(string $name): ?Icon
-    {
-        return $this->icons[$name] ?? null;
     }
 }

@@ -65,7 +65,7 @@ class SvgController extends ActionController
      */
     protected function generateSprite (string $collection): ?string
     {
-        $iconCollection = $this->iconCollectionRepository->findOneByName($collection);
+        $iconCollection = $this->iconCollectionRepository->findOneByIdentifier($collection);
         if (!$iconCollection) {
             return null;
         }

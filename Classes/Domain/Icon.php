@@ -8,7 +8,23 @@ class Icon {
     /**
      * @var string
      */
+    protected $identifier;
+
+    /**
+     * @var string
+     */
     protected $name;
+
+
+    /**
+     * @var string
+     */
+    protected $collection;
+
+    /**
+     * @var string
+     */
+    protected $label;
 
     /**
      * @var string
@@ -20,10 +36,21 @@ class Icon {
      * @param string $name
      * @param string $path
      */
-    public function __construct(string $name, string $path)
+    public function __construct(string $collection, string $name, string $label, string $path)
     {
+        $this->identifier = $collection . ':' . $name;
+        $this->collection = $collection;
         $this->name = $name;
+        $this->label = $label;
         $this->path = $path;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIdentifier(): string
+    {
+        return $this->identifier;
     }
 
     /**
@@ -32,6 +59,22 @@ class Icon {
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCollection(): string
+    {
+        return $this->collection;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLabel(): string
+    {
+        return $this->label;
     }
 
     /**
