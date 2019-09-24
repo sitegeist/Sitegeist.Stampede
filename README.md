@@ -1,8 +1,17 @@
 # Sitegeist.Stampede 
-## Svg Sprite Icons for Neos.
+## Svg Sprite Icons for Neos
 
 All WIP, nothing interesting yet
 
+**Attention: This package use the external svg references which are not supported in some older browsers. Please 
+check this and polyfills like this https://github.com/Keyamoon/svgxuse if needed.**
+
+### Authors & Sponsors
+
+* Wilhelm Behncke - behncke@sitegeist.de
+* Martin Ficzel - ficzel@sitegeist.de
+
+*The development and the public-releases of this package is generously sponsored by our employer https://www.sitegeist.de.*
 
 ## Configuration
 
@@ -15,15 +24,34 @@ Sitegeist:
       example: resource://Vendor.Site/Private/Icons
 ```
 
+allow to select icons in a NodeType:
+```yaml
+'Vendor.Site:NodeType': 
+  properties:
+    icon:
+      type: string
+      ui:
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            dataSourceIdentifier: 'sitegeist-stampede-icons'
+            dataSourceAdditionalData:
+              # Optionaly the icon collections offered to the editor
+              # can be configured. By default all collections will be available   
+              collections: ['example']
+```
+
 ## Fusion
 
-To render icons the prototype `Sitegeis.Stampede:Icon` is used via afx like this: 
+To render icons the prototype `Sitegeist.Stampede:Icon` is used via afx like this: 
 
 ```
     renderer = afx`
-        <Sitegeis.Stampede:Icon identifier="__collectionName__:__iconName__" />
+        <Sitegeist.Stampede:Icon identifier="__collectionName__:__iconName__" />
     `
 ```
 
-Additionally the prototyoe `Sitegeis.Stampede:Icon.Preview` renders a list of all iconCollections 
+Additionally the prototype `Sitegeist.Stampede:Icon.Preview` renders a list of all iconCollections 
 as table.
+
+

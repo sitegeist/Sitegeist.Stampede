@@ -1,4 +1,4 @@
-prototype(Sitegeis.Stampede:Icon) < prototype(Neos.Fusion:Component) {
+prototype(Sitegeist.Stampede:Icon) < prototype(Neos.Fusion:Component) {
 
     identifier = null
     class = 'icon'

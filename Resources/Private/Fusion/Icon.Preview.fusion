@@ -1,4 +1,4 @@
-prototype(Sitegeis.Stampede:Icon.Preview) < prototype(Neos.Fusion:Component) {
+prototype(Sitegeist.Stampede:Icon.Preview) < prototype(Neos.Fusion:Component) {
     @styleguide {
         title = "Icon Overview"
     }
@@ -16,13 +16,13 @@ prototype(Sitegeis.Stampede:Icon.Preview) < prototype(Neos.Fusion:Component) {
                 <tr>
                     <td style="padding: 10px;">{icon.name}</td>
                     <td style="padding: 10px;">
-                        <Sitegeis.Stampede:Icon identifier={iconCollection.name + ':' + icon.name} />
+                        <Sitegeist.Stampede:Icon identifier={iconCollection.name + ':' + icon.name} />
                     </td>
                     <td style="padding: 10px; color: grey; background-color: black;">
-                        <Sitegeis.Stampede:Icon identifier={iconCollection.name + ':' + icon.name} />
+                        <Sitegeist.Stampede:Icon identifier={iconCollection.name + ':' + icon.name} />
                     </td>
                     <td style="padding: 10px; color: white; background-color: grey;">
-                        <Sitegeis.Stampede:Icon identifier={iconCollection.name + ':' + icon.name} />
+                        <Sitegeist.Stampede:Icon identifier={iconCollection.name + ':' + icon.name} />
                     </td>
                 </tr>
                 </Neos.Fusion:Loop>

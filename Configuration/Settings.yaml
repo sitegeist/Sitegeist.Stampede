@@ -1,8 +1,24 @@
 Sitegeist:
   Stampede:
-    collections:
-      sitegeistde: resource://Sitegeist.SitegeistDe/Private/Icons
+    collections: []
+      # example: resource://Vendor.Site/Private/Icons
 
+  Silhouettes:
+    properties:
+      stampede:
+        icon:
+          type: string
+          defaultValue: ''
+          ui:
+            reloadIfChanged: true
+            label: 'Icon'
+            inspector:
+              group: icon
+              editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+              editorOptions:
+                dataSourceIdentifier: 'sitegeist-stampede-icons'
+                dataSourceAdditionalData:
+                  collections: ['foo', 'bar']
 Neos:
   Neos:
     fusion:

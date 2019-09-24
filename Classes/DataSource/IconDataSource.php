@@ -4,8 +4,6 @@ namespace Sitegeist\Stampede\DataSource;
 use Neos\Flow\Annotations as Flow;
 use Neos\Neos\Service\DataSource\AbstractDataSource;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
-use Neos\Utility\Files;
-use Sitegeist\SitegeistDe\Eel\IconHelper;
 use Sitegeist\Stampede\Domain\IconCollectionRepository;
 
 class IconDataSource extends AbstractDataSource
@@ -35,7 +33,10 @@ class IconDataSource extends AbstractDataSource
         if (array_key_exists('collections', $arguments) && !empty($arguments['collections'])) {
             $iconCollections = [];
             foreach ($arguments['collections'] as $iconCollection) {
-                $iconCollections[] = $this->iconCollectionRepository->findOneByName($iconCollection);
+                $collection = $this->iconCollectionRepository->findOneByName($iconCollection);
+                if ($collection) {
+                    $iconCollections[] = $collection;
+                }
             }
         } else {
             $iconCollections = $this->iconCollectionRepository->findAll();
