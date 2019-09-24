@@ -4,23 +4,23 @@ namespace Sitegeist\Stampede\Controller;
 use Neos\Flow\Annotations as Flow;
 use Neos\Error\Messages as Error;
 use Neos\Flow\Mvc\Controller\ActionController;
-use Sitegeist\Stampede\Domain\IconSetRepository;
+use Sitegeist\Stampede\Domain\IconCollectionRepository;
 
 class SvgController extends ActionController
 {
     /**
-     * @var IconSetRepository
+     * @var IconCollectionRepository
      * @Flow\Inject
      */
-    protected $iconSetRepository;
+    protected $iconCollectionRepository;
 
     /**
-     * @param string $iconSet
+     * @param string $iconCollection
      * @return string
      */
-    public function spriteAction(string $iconSet)
+    public function spriteAction(string $iconCollection)
     {
-        $iconSet = $this->iconSetRepository->findOneByName($iconSet);
+        $iconCollection = $this->iconCollectionRepository->findOneByName($iconCollection);
         $domDocument = new \DOMDocument('1.0', 'UTF-8');
 
         // ignore parsing errors
@@ -28,7 +28,7 @@ class SvgController extends ActionController
 
         $domDocument->loadXML('<svg style="position:absolute" ></svg>');
         $svgTag = $domDocument->documentElement;
-        foreach ($iconSet->findAll() as $icon) {
+        foreach ($iconCollection->findAll() as $icon) {
             $iconSvg = new \DOMDocument('1.0', 'UTF-8');
             $iconSvg->load($icon->getPath());
             $iconRootTag = $iconSvg->documentElement;

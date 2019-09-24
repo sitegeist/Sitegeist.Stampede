@@ -6,7 +6,7 @@ use Neos\Neos\Service\DataSource\AbstractDataSource;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Neos\Utility\Files;
 use Sitegeist\SitegeistDe\Eel\IconHelper;
-use Sitegeist\Stampede\Domain\IconSetRepository;
+use Sitegeist\Stampede\Domain\IconCollectionRepository;
 
 class IconDataSource extends AbstractDataSource
 {
@@ -16,10 +16,10 @@ class IconDataSource extends AbstractDataSource
     protected static $identifier = 'sitegeist-stampede-icons';
 
     /**
-     * @var IconSetRepository
+     * @var IconCollectionRepository
      * @Flow\Inject
      */
-    protected $iconSetRepository;
+    protected $iconCollectionRepository;
 
     /**
      * Get data
@@ -32,18 +32,18 @@ class IconDataSource extends AbstractDataSource
     {
         $result = [];
 
-        if (array_key_exists('iconSets', $arguments) && !empty($arguments['iconSets'])) {
-            $iconSets = [];
-            foreach ($arguments['iconSets'] as $iconSet) {
-                $iconSets[] = $this->iconSetRepository->findOneByName($iconSet);
+        if (array_key_exists('collections', $arguments) && !empty($arguments['collections'])) {
+            $iconCollections = [];
+            foreach ($arguments['collections'] as $iconCollection) {
+                $iconCollections[] = $this->iconCollectionRepository->findOneByName($iconCollection);
             }
         } else {
-            $iconSets = $this->iconSetRepository->findAll();
+            $iconCollections = $this->iconCollectionRepository->findAll();
         }
 
-        foreach ($iconSets as $iconSet) {
-            foreach ($iconSet->findAll() as $icon) {
-                $result[] = ['value' => $iconSet->getName() . ':' . $icon->getName(), 'label' => $icon->getName() . ' (' . $iconSet->getName() . ')'];
+        foreach ($iconCollections as $iconCollection) {
+            foreach ($iconCollection->findAll() as $icon) {
+                $result[] = ['value' => $iconCollection->getName() . ':' . $icon->getName(), 'label' => $icon->getName() . ' (' . $iconCollection->getName() . ')'];
             }
         }
 

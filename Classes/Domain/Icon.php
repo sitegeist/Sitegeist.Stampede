@@ -16,7 +16,7 @@ class Icon {
     protected $path;
 
     /**
-     * IconSet constructor.
+     * IconCollection constructor.
      * @param string $name
      * @param string $path
      */

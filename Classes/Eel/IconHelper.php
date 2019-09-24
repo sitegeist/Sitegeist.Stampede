@@ -3,31 +3,31 @@ namespace Sitegeist\Stampede\Eel;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\Eel\ProtectedContextAwareInterface;
-use Sitegeist\Stampede\Domain\IconSet;
-use Sitegeist\Stampede\Domain\IconSetRepository;
+use Sitegeist\Stampede\Domain\IconCollection;
+use Sitegeist\Stampede\Domain\IconCollectionRepository;
 
 class IconHelper implements ProtectedContextAwareInterface
 {
     /**
-     * @var IconSetRepository
+     * @var IconCollectionRepository
      * @Flow\Inject
      */
-    protected $iconSetRepository;
+    protected $iconCollectionRepository;
 
     /**
-     * @return IconSet[]
+     * @return IconCollection[]
      */
-    public function allSets(): array
+    public function allCollections(): array
     {
-        return $this->iconSetRepository->findAll();
+        return $this->iconCollectionRepository->findAll();
     }
 
     /**
-     * @return IconSet|null
+     * @return IconCollection|null
      */
-    public function set(string $name): ?IconSet
+    public function collection(string $name): ?IconCollection
     {
-        return $this->iconSetRepository->findOneByName($name);
+        return $this->iconCollectionRepository->findOneByName($name);
     }
 
     public function allowsCallOfMethod($methodName)

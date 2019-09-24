@@ -4,7 +4,7 @@ namespace Sitegeist\Stampede\Domain;
 use Neos\Flow\Annotations as Flow;
 use Neos\Utility\Files;
 
-class IconSet
+class IconCollection
 {
     /**
      * @var string
@@ -22,7 +22,7 @@ class IconSet
     protected $icons = [];
 
     /**
-     * IconSet constructor.
+     * IconCollection constructor.
      * @param string $name
      * @param string $path
      */

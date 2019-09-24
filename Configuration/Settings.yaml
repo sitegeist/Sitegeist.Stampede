@@ -1,6 +1,6 @@
 Sitegeist:
   Stampede:
-    iconSets:
+    collections:
       sitegeistde: resource://Sitegeist.SitegeistDe/Private/Icons
 
 Neos:
