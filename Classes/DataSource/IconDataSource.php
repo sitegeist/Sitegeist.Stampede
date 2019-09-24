@@ -1,19 +1,19 @@
 <?php
-namespace Sitegeist\Hieroglyph\DataSource;
+namespace Sitegeist\Stampede\DataSource;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\Neos\Service\DataSource\AbstractDataSource;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Neos\Utility\Files;
 use Sitegeist\SitegeistDe\Eel\IconHelper;
-use Sitegeist\Hieroglyph\Domain\IconSetRepository;
+use Sitegeist\Stampede\Domain\IconSetRepository;
 
 class IconDataSource extends AbstractDataSource
 {
     /**
      * @var string
      */
-    protected static $identifier = 'sitegeist-hieroglyph-icons';
+    protected static $identifier = 'sitegeist-stampede-icons';
 
     /**
      * @var IconSetRepository

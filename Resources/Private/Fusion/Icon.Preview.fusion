@@ -1,9 +1,9 @@
-prototype(Sitegeis.Hieroglyph:Icon.Preview) < prototype(Neos.Fusion:Component) {
+prototype(Sitegeis.Stampede:Icon.Preview) < prototype(Neos.Fusion:Component) {
     @styleguide {
         title = "Icon Overview"
     }
 
-    allSets = ${Hieroglyph.allSets()}
+    allSets = ${Stampede.allSets()}
 
     renderer = afx`
         <h1>all Icons</h1>
@@ -16,13 +16,13 @@ prototype(Sitegeis.Hieroglyph:Icon.Preview) < prototype(Neos.Fusion:Component) {
                 <tr>
                     <td style="padding: 10px;">{icon.name}</td>
                     <td style="padding: 10px;">
-                        <Sitegeis.Hieroglyph:Icon identifier={iconSet.name + ':' + icon.name} />
+                        <Sitegeis.Stampede:Icon identifier={iconSet.name + ':' + icon.name} />
                     </td>
                     <td style="padding: 10px; color: grey; background-color: black;">
-                        <Sitegeis.Hieroglyph:Icon identifier={iconSet.name + ':' + icon.name} />
+                        <Sitegeis.Stampede:Icon identifier={iconSet.name + ':' + icon.name} />
                     </td>
                     <td style="padding: 10px; color: white; background-color: grey;">
-                        <Sitegeis.Hieroglyph:Icon identifier={iconSet.name + ':' + icon.name} />
+                        <Sitegeis.Stampede:Icon identifier={iconSet.name + ':' + icon.name} />
                     </td>
                 </tr>
                 </Neos.Fusion:Loop>

@@ -1,19 +1,23 @@
 {
-    "description": "",
+    "description": "svg-sprite icons for neos",
     "type": "neos-package",
-    "name": "sitegeist/hieroglyph",
+    "name": "sitegeist/stampede",
     "require": {
         "neos/fusion": "~4.3 || dev-master",
         "neos/fusion-afx": "~1.3 || dev-mater"
     },
+    "suggest": {
+        "sitegeist/klarschiff": "*",
+        "sitegeist/silhouettes": "*"
+    },
     "autoload": {
         "psr-4": {
-            "Sitegeist\\Hieroglyph\\": "Classes/"
+            "Sitegeist\\Stampede\\": "Classes/"
         }
     },
     "extra": {
         "neos": {
-            "package-key": "Sitegeist.Hieroglyph"
+            "package-key": "Sitegeist.Stampede"
         }
     }
 }

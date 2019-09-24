@@ -1,10 +1,10 @@
 ##
-# Hieroglyph
+# Stampede
 -
-  name:  'Hieroglyph-SvgSprite'
-  uriPattern: 'hieroglyph/svgsprite'
+  name:  'Stampede-SvgSprite'
+  uriPattern: 'stampede/svgsprite'
   defaults:
-    '@package':    'Sitegeist.Hieroglyph'
+    '@package':    'Sitegeist.Stampede'
     '@controller': 'Svg'
     '@action':     'sprite'
   httpMethods: ['GET']

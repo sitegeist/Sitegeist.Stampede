@@ -1,10 +1,10 @@
 <?php
-namespace Sitegeist\Hieroglyph\Controller;
+namespace Sitegeist\Stampede\Controller;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\Error\Messages as Error;
 use Neos\Flow\Mvc\Controller\ActionController;
-use Sitegeist\Hieroglyph\Domain\IconSetRepository;
+use Sitegeist\Stampede\Domain\IconSetRepository;
 
 class SvgController extends ActionController
 {

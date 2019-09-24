@@ -1,10 +1,10 @@
 <?php
-namespace Sitegeist\Hieroglyph\Eel;
+namespace Sitegeist\Stampede\Eel;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\Eel\ProtectedContextAwareInterface;
-use Sitegeist\Hieroglyph\Domain\IconSet;
-use Sitegeist\Hieroglyph\Domain\IconSetRepository;
+use Sitegeist\Stampede\Domain\IconSet;
+use Sitegeist\Stampede\Domain\IconSetRepository;
 
 class IconHelper implements ProtectedContextAwareInterface
 {

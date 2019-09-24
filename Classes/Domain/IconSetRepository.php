@@ -1,11 +1,11 @@
 <?php
-namespace Sitegeist\Hieroglyph\Domain;
+namespace Sitegeist\Stampede\Domain;
 
 use Neos\Flow\Annotations as Flow;
 
 /**
  * Class IconSetRepository
- * @package Sitegeist\Hieroglyph\Domain
+ * @package Sitegeist\Stampede\Domain
  * @Flow\Scope("singleton")
  */
 class IconSetRepository

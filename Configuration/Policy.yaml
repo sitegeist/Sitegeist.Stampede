@@ -1,11 +1,11 @@
 privilegeTargets:
   'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
-    'Sitegeist.Hieroglyph:SvgSprite':
-      matcher: 'method(Sitegeist\Hieroglyph\Controller\SvgController->(sprite)Action())'
+    'Sitegeist.Stampede:SvgSprite':
+      matcher: 'method(Sitegeist\Stampede\Controller\SvgController->(sprite)Action())'
 
 roles:
   'Neos.Flow:Everybody':
     privileges:
       -
-        privilegeTarget: 'Sitegeist.Hieroglyph:SvgSprite'
+        privilegeTarget: 'Sitegeist.Stampede:SvgSprite'
         permission: GRANT

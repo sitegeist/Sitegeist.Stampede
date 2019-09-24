@@ -1,4 +1,4 @@
-prototype(Sitegeis.Hieroglyph:Icon) < prototype(Neos.Fusion:Component) {
+prototype(Sitegeis.Stampede:Icon) < prototype(Neos.Fusion:Component) {
 
     identifier = null
     class = 'icon'
@@ -20,8 +20,8 @@ prototype(Sitegeis.Hieroglyph:Icon) < prototype(Neos.Fusion:Component) {
             style={props.style}
         >
             <use>
-                <Neos.Fusion:UriBuilder @path='attributes.xlink:href' package="Sitegeist.Hieroglyph" controller="Svg" action="sprite" arguments={{iconSet:props._parts[0]}} section={props._parts[1]} />
-                <Neos.Fusion:UriBuilder @path='attributes.href' package="Sitegeist.Hieroglyph" controller="Svg" action="sprite" arguments={{iconSet:props._parts[0]}} section={props._parts[1]} />
+                <Neos.Fusion:UriBuilder @path='attributes.xlink:href' package="Sitegeist.Stampede" controller="Svg" action="sprite" arguments={{iconSet:props._parts[0]}} additionalParams={SitegeistKlarSchiffCacheBuster ? {cb:SitegeistKlarSchiffCacheBuster.get()} : null} section={props._parts[1]} />
+                <Neos.Fusion:UriBuilder @path='attributes.href' package="Sitegeist.Stampede" controller="Svg" action="sprite" arguments={{iconSet:props._parts[0]}} additionalParams={SitegeistKlarSchiffCacheBuster ? {cb:SitegeistKlarSchiffCacheBuster.get()} : null} section={props._parts[1]} />
             </use>
         </svg>
     `

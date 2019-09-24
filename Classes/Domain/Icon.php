@@ -1,5 +1,5 @@
 <?php
-namespace Sitegeist\Hieroglyph\Domain;
+namespace Sitegeist\Stampede\Domain;
 
 use Neos\Flow\Annotations as Flow;
 
