@@ -55,3 +55,10 @@ Additionally the prototype `Sitegeist.Stampede:Icon.Preview` renders a list of a
 as table.
 
 
+## Installation
+
+Sitegeist.Stampede is available via packagist. Just run `composer require sitegeist/stampede` to install it. We use semantic-versioning so every breaking change will increase the major-version number.
+
+## Contribution
+
+We will gladly accept contributions especially to improve the rsync, and ssh-options for a specific preset. Please send us pull requests.

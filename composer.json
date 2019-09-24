@@ -6,6 +6,7 @@
         "neos/fusion": "~4.3 || dev-master",
         "neos/fusion-afx": "~1.3 || dev-mater"
     },
+    "license": "GPL-3.0-or-later",
     "suggest": {
         "sitegeist/klarschiff": "*"
     },
