@@ -1,0 +1,9 @@
+'Sitegeist\Stampede\Controller\SvgController':
+  properties:
+    svgSpriteCache:
+      object:
+        factoryObjectName: Neos\Flow\Cache\CacheManager
+        factoryMethodName: getCache
+        arguments:
+          1:
+            value: Sitegeist_Stampede_SvgSpriteCache

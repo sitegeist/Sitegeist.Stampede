@@ -1,0 +1,5 @@
+Sitegeist_Stampede_SvgSpriteCache:
+  frontend: Neos\Cache\Frontend\VariableFrontend
+  backend: Neos\Cache\Backend\FileBackend
+  backendOptions:
+    defaultLifetime: 31536000

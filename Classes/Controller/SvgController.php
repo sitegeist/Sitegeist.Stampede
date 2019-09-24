@@ -5,6 +5,7 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Error\Messages as Error;
 use Neos\Flow\Mvc\Controller\ActionController;
 use Sitegeist\Stampede\Domain\IconCollectionRepository;
+use Neos\Cache\Frontend\VariableFrontend;
 
 class SvgController extends ActionController
 {
@@ -15,12 +16,60 @@ class SvgController extends ActionController
     protected $iconCollectionRepository;
 
     /**
+     * @var VariableFrontend
+     * @Flow\Inject
+     */
+    protected $svgSpriteCache;
+
+    /**
+     * @var array
+     * @Flow\InjectConfiguration()
+     */
+    protected $configuration;
+
+    /**
+     * @param string $collection
+     * @return string
+     */
+    public function spriteAction(string $collection)
+    {
+        if ($this->configuration['enableCache'] && $this->svgSpriteCache->has($collection)) {
+            $result = $this->svgSpriteCache->get($collection);
+            if ($result) {
+                $this->response->setHeader('Content-Type', 'image/svg+xml');
+                return $result;
+            } else {
+                $this->response->setStatusCode('404');
+                return "Not found";
+            }
+        }
+
+        $result = $this->generateSprite($collection);
+
+        if ($this->configuration['enableCache']) {
+            $this->svgSpriteCache->set($collection, $result);
+        }
+
+        if ($result) {
+            $this->response->setHeader('Content-Type', 'image/svg+xml');
+            return $result;
+        } else {
+            $this->response->setStatusCode('404');
+            return "Not found";
+        }
+    }
+
+    /**
      * @param string $iconCollection
      * @return string
      */
-    public function spriteAction(string $iconCollection)
+    protected function generateSprite (string $collection): ?string
     {
-        $iconCollection = $this->iconCollectionRepository->findOneByName($iconCollection);
+        $iconCollection = $this->iconCollectionRepository->findOneByName($collection);
+        if (!$iconCollection) {
+            return null;
+        }
+
         $domDocument = new \DOMDocument('1.0', 'UTF-8');
 
         // ignore parsing errors
@@ -64,7 +113,6 @@ class SvgController extends ActionController
         // resore lib xml error handling
         libxml_use_internal_errors($useInternalErrorsBackup);
 
-        $this->response->setHeader('Content-Type', 'image/svg+xml');
-        return $domDocument->saveXML();;
+        return $domDocument->saveXML();
     }
 }

@@ -20,8 +20,8 @@ prototype(Sitegeist.Stampede:Icon) < prototype(Neos.Fusion:Component) {
             style={props.style}
         >
             <use>
-                <Neos.Fusion:UriBuilder @path='attributes.xlink:href' package="Sitegeist.Stampede" controller="Svg" action="sprite" arguments={{iconCollection:props._parts[0]}} additionalParams={SitegeistKlarSchiffCacheBuster ? {cb:SitegeistKlarSchiffCacheBuster.get()} : null} section={props._parts[1]} />
-                <Neos.Fusion:UriBuilder @path='attributes.href' package="Sitegeist.Stampede" controller="Svg" action="sprite" arguments={{iconCollection:props._parts[0]}} additionalParams={SitegeistKlarSchiffCacheBuster ? {cb:SitegeistKlarSchiffCacheBuster.get()} : null} section={props._parts[1]} />
+                <Neos.Fusion:UriBuilder @path='attributes.xlink:href' package="Sitegeist.Stampede" controller="Svg" action="sprite" arguments={{collection:props._parts[0]}} additionalParams={SitegeistKlarSchiffCacheBuster ? {cb:SitegeistKlarSchiffCacheBuster.get()} : null} section={props._parts[1]} />
+                <Neos.Fusion:UriBuilder @path='attributes.href' package="Sitegeist.Stampede" controller="Svg" action="sprite" arguments={{collection:props._parts[0]}} additionalParams={SitegeistKlarSchiffCacheBuster ? {cb:SitegeistKlarSchiffCacheBuster.get()} : null} section={props._parts[1]} />
             </use>
         </svg>
     `
