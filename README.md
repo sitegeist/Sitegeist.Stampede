@@ -24,9 +24,10 @@ Sitegeist:
   Stampede:
     collections:
       example_one: 
-        label: "Example"
+        label: "Example One"
         path: resource://Vendor.Site/Private/Icons
       example_two:
+        label: "Example Two"
         items:
           foo:
             label: "Foo Item"
