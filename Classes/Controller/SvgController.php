@@ -75,8 +75,12 @@ class SvgController extends ActionController
         // ignore parsing errors
         $useInternalErrorsBackup = libxml_use_internal_errors(true);
 
-        $domDocument->loadXML('<svg style="position:absolute" ></svg>');
+        $domDocument->loadXML('<svg style="fill:black;" x="0px" y="0px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500"></svg>');
+
         $svgTag = $domDocument->documentElement;
+        $index = 0;
+        $columns = 5;
+
         foreach ($iconCollection->findAll() as $icon) {
             $iconSvg = new \DOMDocument('1.0', 'UTF-8');
             $iconSvg->load($icon->getPath());
@@ -108,6 +112,15 @@ class SvgController extends ActionController
             }
 
             $svgTag->appendChild($symbol);
+
+            $use = $domDocument->createElement('use');
+            $use->setAttribute('href', '#' . $icon->getName());
+            $use->setAttribute('x', (10 + ($index % $columns) * 100)) ;
+            $use->setAttribute('y', (10 + floor ($index / $columns) * 100));
+            $use->setAttribute('width', 80);
+            $svgTag->appendChild($use);
+
+            $index ++;
         }
 
         // resore lib xml error handling
