@@ -90,7 +90,7 @@ prototype(Vendow.Site:Component.SvgIcon) < prototype(Neos.Fusion:Component) {
     renderer = Sitegeist.Stampede:Icon {
         identifier = ${props.identifier}
         class = "svgIcon"
-        style = "enable-background:new 0 0 512 512;"
+        style = null
     }
 }
 ```
