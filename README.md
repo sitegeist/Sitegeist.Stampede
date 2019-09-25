@@ -23,9 +23,19 @@ collection from a `path` or by referenceing each `item` individually.
 Sitegeist:
   Stampede:
     collections:
+
+      #
+      # Collections with a path will include all svg files in the given path
+      # The icon name and the label are created from the filename
+      #
       example_one: 
         label: "Example One"
         path: resource://Vendor.Site/Private/Icons
+
+      #
+      # Collections with explicit items allow to configure the svg file and label
+      # for each icon. The key defines the icon name.
+      #
       example_two:
         label: "Example Two"
         items:
