@@ -33,7 +33,7 @@ Sitegeist:
         path: resource://Vendor.Site/Private/Icons
 
       #
-      # Collections with explicit items allow to configure the svg file and label
+      # Collections with explicit items allow to configure the path and label
       # for each icon. The key defines the icon name.
       #
       example_two:
