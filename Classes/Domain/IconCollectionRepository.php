@@ -26,8 +26,8 @@ class IconCollectionRepository
      */
     public function initializeObject()
     {
-        foreach ($this->configuration['collections'] as $identifier => $collection) {
-            $this->iconCollections[$identifier] = new IconCollection($identifier, $collection['label'], $collection['path']);
+        foreach ($this->configuration['collections'] as $identifier => $collectionConfiguration) {
+            $this->iconCollections[$identifier] = new IconCollection($identifier, $collectionConfiguration);
         }
     }
 

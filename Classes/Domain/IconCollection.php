@@ -17,11 +17,6 @@ class IconCollection
     protected $label;
 
     /**
-     * @var string
-     */
-    protected $path;
-
-    /**
      * @var Icon[]
      */
     protected $icons = [];
@@ -29,18 +24,28 @@ class IconCollection
     /**
      * IconCollection constructor.
      * @param string $name
-     * @param string $path
+     * @param array $collectionConfiguration
      */
-    public function __construct(string $identifier, string $label, string $path)
+    public function __construct(string $identifier, array $collectionConfiguration)
     {
         $this->identifier = $identifier;
-        $this->label = $label;
-        $this->path = $path;
-        $svgFiles = Files::readDirectoryRecursively($path, 'svg');
-        foreach ($svgFiles as $svgFile) {
-            $name = substr($svgFile, strlen($path) + 1, strlen($svgFile) - strlen($path) - 5);
-            $label = $name;
-            $this->icons[$name] = new Icon($this->identifier, $name, $label, $svgFile);
+        $this->label = $collectionConfiguration['label'] ?? $identifier;
+
+        if (array_key_exists('path', $collectionConfiguration)) {
+            $path = $collectionConfiguration['path'] ;
+            $svgFiles = Files::readDirectoryRecursively($path, 'svg');
+            foreach ($svgFiles as $svgFile) {
+                $name = substr($svgFile, strlen($path) + 1, strlen($svgFile) - strlen($path) - 5);
+                $label = $name;
+                $this->icons[$name] = new Icon($this->identifier, $name, $label, $svgFile);
+            }
+        } elseif (array_key_exists('items', $collectionConfiguration) && is_array($collectionConfiguration['items'])) {
+            foreach ($collectionConfiguration['items'] as $name => $itemConfiguration) {
+                $label = $itemConfiguration['label'] ?? $name;
+                if (array_key_exists('path', $itemConfiguration) && file_exists( $itemConfiguration['path'])) {
+                    $this->icons[$name] = new Icon($this->identifier, $name, $label, $itemConfiguration['path']);
+                }
+            }
         }
     }
 
@@ -58,14 +63,6 @@ class IconCollection
     public function getLabel(): string
     {
         return $this->label;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPath(): string
-    {
-        return $this->path;
     }
 
     /**
