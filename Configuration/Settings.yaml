@@ -2,8 +2,7 @@ Sitegeist:
   Stampede:
     enableCache: true
     collections: []
-      # example: resource://Vendor.Site/Private/Icons
-
+            
   Silhouettes:
     properties:
       stampede:
