@@ -1,10 +1,11 @@
 # Sitegeist.Stampede 
 ## Svg Sprite Icons for Neos
 
-All WIP, nothing interesting yet
+The package creates svg sprites that combine multiple svgs into a single svg with symbols. To use the svg sprites 
+a fusion prototype `Sitegeist.Stampede:Icon` is included that renders a symbol from a given svgspite.
 
-**Attention: This package use the external svg references which are not supported in some older browsers. Please 
-check this and polyfills like this https://github.com/Keyamoon/svgxuse if needed.**
+*Attention: This package use the external svg references which are not supported in some older browsers. Please 
+check this and polyfills like this https://github.com/Keyamoon/svgxuse if needed.*
 
 ### Authors & Sponsors
 
@@ -15,7 +16,8 @@ check this and polyfills like this https://github.com/Keyamoon/svgxuse if needed
 
 ## Configuration
 
-The package manages icon collections that are added via settings. 
+The package manages icon collections that are defined via the Neos settings. It is possible to configure an 
+collection from a `path` or by referenceing each `item` individually.
 
 ```yaml
 Sitegeist:
@@ -61,8 +63,22 @@ To render icons the prototype `Sitegeist.Stampede:Icon` is used via afx like thi
     `
 ```
 
+ATTENTION: it is recommended to extend this prototype to your needs in your own fusion.
+
+```
+prototype(Vendow.Site:Component.SvgIcon) < prototype(Neos.Fusion:Component) {
+    identifier = null
+
+    renderer = Sitegeist.Stampede:Icon {
+        identifier = ${props.identifier}
+        class = "svgIcon"
+        style = "enable-background:new 0 0 512 512;"
+    }
+}
+```
+
 Additionally the prototype `Sitegeist.Stampede:Icon.Preview` renders a list of all iconCollections 
-as table.
+as table to be viewed in the `Sitegeist.Monocle` styleguide.
 
 
 ## Installation
