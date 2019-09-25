@@ -90,7 +90,7 @@ To render icons the prototype `Sitegeist.Stampede:Icon` is used via afx like thi
     `
 ```
 
-ATTENTION: it is recommended to extend this prototype to your needs in your own fusion.
+ATTENTION: It is highly recommended to create a wrapper prototype for icons that sets the required `class` and unsets the default `style`.
 
 ```
 prototype(Vendow.Site:Component.SvgIcon) < prototype(Neos.Fusion:Component) {
