@@ -54,7 +54,16 @@ Sitegeist:
             path: resource://Vendor.Site/Private/Icons/bar.svg
 ```
 
-allow to select icons in a NodeType:
+The generated svg sprites are cached for each collection in Production context. For the Development context
+the sprite cache is disabled. You can control this via setting:
+
+```yaml
+Sitegeist:
+  Stampede:
+    enableCache: false
+```  
+
+A custom data source is included to allow editors to select icons in the Neos Inspector: 
 ```yaml
 'Vendor.Site:NodeType': 
   properties:
