@@ -1,8 +1,8 @@
 prototype(Sitegeist.Stampede:Icon) < prototype(Neos.Fusion:Component) {
 
     identifier = null
-    class = 'icon'
-    style = 'enable-background:new 0 0 512 512; fill: currentColor; height: 1em'
+    class = null
+    style = 'fill: currentColor; height: 1em'
 
     _parts = ${String.split(this.identifier, ':', 2)}
 
@@ -12,8 +12,6 @@ prototype(Sitegeist.Stampede:Icon) < prototype(Neos.Fusion:Component) {
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px"
-            y="0px"
             viewBox="0 0 512 512"
             xml:space="preserve"
             class={props.class}
