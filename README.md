@@ -6,7 +6,7 @@ a fusion prototype `Sitegeist.Stampede:Icon` is included that renders a symbol f
 
 The rendered html code for an icon will look in principle like this:
 ```html
-<svg class="icon" style="fill: currentColor; height: 1em;">
+<svg class="icon">
     <use xlink:href="/stampede/svgsprite?collection=example#neos"></use>
 </svg>
 ```
