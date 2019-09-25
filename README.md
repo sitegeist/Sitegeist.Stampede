@@ -4,6 +4,13 @@
 The package creates svg sprites that combine multiple svgs into a single svg with symbols. To use the svg sprites 
 a fusion prototype `Sitegeist.Stampede:Icon` is included that renders a symbol from a given svgspite.
 
+The rendered html code for an icon will look in principle like this:
+```html
+<svg class="icon" style="fill: currentColor; height: 1em;">
+    <use xlink:href="/stampede/svgsprite?collection=example#neos"></use>
+</svg>
+```
+
 *Attention: This package use the external svg references which are not supported in some older browsers. Please 
 check this and polyfills like this https://github.com/Keyamoon/svgxuse if needed.*
 
