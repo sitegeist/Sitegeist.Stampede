@@ -87,4 +87,4 @@ Sitegeist.Stampede is available via packagist. Just run `composer require sitege
 
 ## Contribution
 
-We will gladly accept contributions especially to improve the rsync, and ssh-options for a specific preset. Please send us pull requests.
+We will gladly accept contributions. Please send us pull requests.
