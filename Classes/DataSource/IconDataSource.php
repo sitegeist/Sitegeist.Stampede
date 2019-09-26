@@ -51,7 +51,7 @@ class IconDataSource extends AbstractDataSource
                 $result[] = [
                     'group' => $iconCollection->getLabel(),
                     'value' => $iconCollection->getIdentifier() . ':' . $icon->getIdentifier(),
-                    'icon' => $icon->getIdentifier(),
+                    'icon' => $iconCollection->getIdentifier() . ':' . $icon->getIdentifier(),
                     'label' => $icon->getLabel()
                 ];
             }
