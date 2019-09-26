@@ -50,7 +50,7 @@ class IconDataSource extends AbstractDataSource
             foreach ($iconCollection->findAll() as $icon) {
                 $result[] = [
                     'group' => $iconCollection->getLabel(),
-                    'value' => $icon->getIdentifier(),
+                    'value' => $iconCollection->getIdentifier() . ':' . $icon->getIdentifier(),
                     'icon' => $icon->getIdentifier(),
                     'label' => $icon->getLabel()
                 ];
