@@ -37,13 +37,13 @@ class IconCollection
             foreach ($svgFiles as $svgFile) {
                 $name = substr($svgFile, strlen($path) + 1, strlen($svgFile) - strlen($path) - 5);
                 $label = $name;
-                $this->icons[$name] = new Icon($this->identifier, $name, $label, $svgFile);
+                $this->icons[$name] = new Icon($name, $label, $svgFile);
             }
         } elseif (array_key_exists('items', $collectionConfiguration) && is_array($collectionConfiguration['items'])) {
             foreach ($collectionConfiguration['items'] as $name => $itemConfiguration) {
                 $label = $itemConfiguration['label'] ?? $name;
                 if (array_key_exists('path', $itemConfiguration) && file_exists( $itemConfiguration['path'])) {
-                    $this->icons[$name] = new Icon($this->identifier, $name, $label, $itemConfiguration['path']);
+                    $this->icons[$name] = new Icon($name, $label, $itemConfiguration['path']);
                 }
             }
         }
@@ -79,5 +79,14 @@ class IconCollection
     public function findAll(): array
     {
         return $this->icons;
+    }
+
+    /**
+     * @param $name
+     * @return Icon|null
+     */
+    public function findOneByIdentifier($name): ?Icon
+    {
+        return $this->icons[$name] ?? null;
     }
 }

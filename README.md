@@ -35,16 +35,16 @@ Sitegeist:
       # Collections with a path will include all svg files in the given path
       # The icon name and the label are created from the filename
       #
-      example_one: 
-        label: "Example One"
+      default: 
+        label: "Default Collection"
         path: resource://Vendor.Site/Private/Icons
 
       #
       # Collections with explicit items allow to configure the path and label
       # for each icon. The key defines the icon name.
       #
-      example_two:
-        label: "Example Two"
+      example:
+        label: "Example Collection"
         items:
           foo:
             label: "Foo Item"
@@ -80,24 +80,48 @@ A custom data source is included to allow editors to select icons in the Neos In
               collections: ['example']
 ```
 
+*Attention the returned value of the data source is a combined identifier of the 
+collection and the icon separated by colon. For rendering you have to split it before passing
+`collection` and `icon` to `Sitegeist.Stampede:Icon`:
+
+``` 
+prototype(Vendor.Site:Component.SvgIcon) < prototype(Neos.Neos:ContentComponent) {
+    parts = ${String.split(q(node).property('icon'), ':', 2)} 
+       
+    renderer = Sitegeist.Stampede:Icon {
+        collection = ${props.parts[0]}
+        icon = ${props.parts[1]}
+    }
+}
+```
+
 ## Fusion
 
-To render icons the prototype `Sitegeist.Stampede:Icon` is used via afx like this: 
-
+To render icons the prototype `Sitegeist.Stampede:Icon` is used via afx like this. 
 ```
     renderer = afx`
-        <Sitegeist.Stampede:Icon identifier="__collectionName__:__iconName__" />
+        <Sitegeist.Stampede:Icon collection="default" icon="neos" />
+    `
+```
+
+If the `inline` option is set the svg content is directly put into the html instead of referencing
+the spritesheet. This can improve the performance if many icons exist but only very few are used on a single page. 
+```
+    renderer = afx`
+        <Sitegeist.Stampede:Icon collection="default" icon="neos" inline/>
     `
 ```
 
 ATTENTION: It is highly recommended to create a wrapper prototype for icons that sets the required `class` and unsets the default `style`.
 
 ```
-prototype(Vendow.Site:Component.SvgIcon) < prototype(Neos.Fusion:Component) {
-    identifier = null
+prototype(Vendor.Site:Component.SvgIcon) < prototype(Neos.Fusion:Component) {
+    icon = null
+    collection = 'default'
 
     renderer = Sitegeist.Stampede:Icon {
-        identifier = ${props.identifier}
+        collection = ${props.collection}
+        icon = ${props.identifier}
         class = "svgIcon"
         style = null
     }

@@ -83,13 +83,13 @@ class SvgController extends ActionController
 
         foreach ($iconCollection->findAll() as $icon) {
             $iconSvg = new \DOMDocument('1.0', 'UTF-8');
-            $iconSvg->load($icon->getPath());
+            $iconSvg->loadXML($icon->getSvg());
             $iconRootTag = $iconSvg->documentElement;
             $symbol = $domDocument->createElement('symbol');
-            $symbol->setAttribute('id', $icon->getName());
+            $symbol->setAttribute('id', $icon->getIdentifier());
             $symbol->setAttribute('xmlns', 'http://www.w3.org/2000/svg');
 
-            // copy child nodes
+            // copy svg child nodes to symbol
             foreach($iconRootTag->childNodes as $childNode) {
                 /**
                  * @var \DOMNode $childNode
@@ -100,7 +100,8 @@ class SvgController extends ActionController
                 $importedNode = $domDocument->importNode($childNode, true);
                 $symbol->appendChild($importedNode);
             }
-            // copy attributes
+
+            // copy svg attributes to symbol
             foreach($iconRootTag->attributes as $name => $attribute) {
                 /**
                  * @var \DOMNode $attribute
@@ -114,7 +115,7 @@ class SvgController extends ActionController
             $svgTag->appendChild($symbol);
 
             $use = $domDocument->createElement('use');
-            $use->setAttribute('href', '#' . $icon->getName());
+            $use->setAttribute('href', '#' . $icon->getIdentifier());
             $use->setAttribute('x', (10 + ($index % $columns) * 100)) ;
             $use->setAttribute('y', (10 + floor ($index / $columns) * 100));
             $use->setAttribute('width', 80);

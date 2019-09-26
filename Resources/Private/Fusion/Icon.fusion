@@ -1,27 +1,43 @@
 prototype(Sitegeist.Stampede:Icon) < prototype(Neos.Fusion:Component) {
 
-    identifier = null
+    collection = null
+    icon = null
     class = null
-    style = 'fill: currentColor; height: 1em'
+    style = 'fill: currentColor; height: 1em;'
+    inline = false
 
-    _parts = ${String.split(this.identifier, ':', 2)}
+    renderer = Neos.Fusion:Case {
+        @if.has = ${props.collection && props.icon}
+        sprite {
+            condition = ${props.inline == false}
+            renderer = afx`
+                <svg
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 512 512"
+                    xml:space="preserve"
+                    class={props.class}
+                    style={props.style}
+                >
+                    <use>
+                        <Neos.Fusion:UriBuilder @path='attributes.xlink:href' package="Sitegeist.Stampede" controller="Svg" action="sprite" arguments={{collection:props.collection}} additionalParams={SitegeistKlarSchiffCacheBuster ? {cb:SitegeistKlarSchiffCacheBuster.get()} : null} section={props.icon} />
+                        <Neos.Fusion:UriBuilder @path='attributes.href' package="Sitegeist.Stampede" controller="Svg" action="sprite" arguments={{collection:props.collection}} additionalParams={SitegeistKlarSchiffCacheBuster ? {cb:SitegeistKlarSchiffCacheBuster.get()} : null} section={props.icon} />
+                    </use>
+                </svg>
+            `
+        }
 
-    renderer = afx`
-        <svg
-            @if.has={props.identifier}
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 0 512 512"
-            xml:space="preserve"
-            class={props.class}
-            style={props.style}
-        >
-            <use>
-                <Neos.Fusion:UriBuilder @path='attributes.xlink:href' package="Sitegeist.Stampede" controller="Svg" action="sprite" arguments={{collection:props._parts[0]}} additionalParams={SitegeistKlarSchiffCacheBuster ? {cb:SitegeistKlarSchiffCacheBuster.get()} : null} section={props._parts[1]} />
-                <Neos.Fusion:UriBuilder @path='attributes.href' package="Sitegeist.Stampede" controller="Svg" action="sprite" arguments={{collection:props._parts[0]}} additionalParams={SitegeistKlarSchiffCacheBuster ? {cb:SitegeistKlarSchiffCacheBuster.get()} : null} section={props._parts[1]} />
-            </use>
-        </svg>
-    `
-
+        inline {
+            condition = ${props.inline == true}
+            renderer = afx`
+                <Neos.Fusion:Augmenter
+                    class={props.class}
+                    style={props.style}
+                >
+                    {Stampede.icon(props.collection, props.icon).svg}
+                </Neos.Fusion:Augmenter>
+            `
+        }
+    }
 }

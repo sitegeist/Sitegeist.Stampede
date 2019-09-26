@@ -16,13 +16,13 @@ prototype(Sitegeist.Stampede:Icon.Preview) < prototype(Neos.Fusion:Component) {
                 <tr>
                     <td style="padding: 10px;">{icon.label}</td>
                     <td style="padding: 10px;">
-                        <Sitegeist.Stampede:Icon identifier={icon.identifier} />
+                        <Sitegeist.Stampede:Icon collection={iconCollection.identifier} icon={icon.identifier} />
                     </td>
                     <td style="padding: 10px; color: grey; background-color: black;">
-                        <Sitegeist.Stampede:Icon identifier={icon.identifier} />
+                        <Sitegeist.Stampede:Icon collection={iconCollection.identifier} icon={icon.identifier} />
                     </td>
                     <td style="padding: 10px; color: white; background-color: grey;">
-                        <Sitegeist.Stampede:Icon identifier={icon.identifier} />
+                        <Sitegeist.Stampede:Icon collection={iconCollection.identifier} icon={icon.identifier} />
                     </td>
                 </tr>
                 </Neos.Fusion:Loop>
