@@ -1,5 +1,5 @@
 # Sitegeist.Stampede 
-## Svg Sprite Icons 
+## Svg Icons for Neos
 
 The package renders icons based ob svg files. The rendering is done inline or via svg sprite that combines all svgs of a collection into one request.
 
