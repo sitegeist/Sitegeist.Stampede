@@ -1,15 +1,7 @@
 # Sitegeist.Stampede 
-## Svg Sprite Icons for Neos
+## Svg Sprite Icons 
 
-The package creates svg sprites that combine multiple svgs into a single svg with symbols. To use the svg sprites 
-a fusion prototype `Sitegeist.Stampede:Icon` is included that renders a symbol from a given svgspite.
-
-The rendered html code for an icon will look in principle like this:
-```html
-<svg style="fill: currentColor; height: 1em">
-    <use xlink:href="/stampede/svgsprite?collection=example#neos"></use>
-</svg>
-```
+The package renders icons based ob svg files. The rendering is done inline or via svg sprite that combines all svgs of a collection into one request.
 
 *Attention: This package use the external svg references which are not supported in some older browsers. Please 
 check this and polyfills like this https://github.com/Keyamoon/svgxuse if needed.*
@@ -97,6 +89,14 @@ prototype(Vendor.Site:Component.SvgIcon) < prototype(Neos.Neos:ContentComponent)
 
 ## Fusion
 
+
+`Sitegeist.Stampede:Icon` has the following options:
+`collection`: string (required) name of the icon collection 
+`icon`: string (required) name of the icon 
+`class`: string (optional) class to add to the svg tag
+`style`: string (optional) style to add to the svg tag. Default is `fill: currentColor; height: 1em;`
+`inline`: boolean render the svg inline. Default is `false`
+
 To render icons the prototype `Sitegeist.Stampede:Icon` is used via afx like this. 
 ```
     renderer = afx`
@@ -108,7 +108,7 @@ If the `inline` option is set the svg content is directly put into the html inst
 the spritesheet. This can improve the performance if many icons exist but only very few are used on a single page. 
 ```
     renderer = afx`
-        <Sitegeist.Stampede:Icon collection="default" icon="neos" inline/>
+        <Sitegeist.Stampede:Icon collection="default" icon="neos" inline />
     `
 ```
 
