@@ -3,7 +3,7 @@
 
 The package renders icons based on svg files. The rendering is done inline or via an svg sprite that combines all svgs of a collection into one request.
 
-*Attention: This package use the external svg references for svg-sprites which are not supported in some older browsers. Please check this and polyfills like this https://github.com/Keyamoon/svgxuse if needed.*
+*Attention: This package use the external svg references for svg-sprites which are not supported in some older browsers. Please check this and use polyfills like this https://github.com/Keyamoon/svgxuse if needed.*
 
 ### Authors & Sponsors
 
