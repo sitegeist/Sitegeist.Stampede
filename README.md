@@ -1,10 +1,9 @@
 # Sitegeist.Stampede 
 ## Svg Icons for Neos
 
-The package renders icons based ob svg files. The rendering is done inline or via svg sprite that combines all svgs of a collection into one request.
+The package renders icons based on svg files. The rendering is done inline or via an svg sprite that combines all svgs of a collection into one request.
 
-*Attention: This package use the external svg references which are not supported in some older browsers. Please 
-check this and polyfills like this https://github.com/Keyamoon/svgxuse if needed.*
+*Attention: This package use the external svg references for svg-sprites which are not supported in some older browsers. Please check this and polyfills like this https://github.com/Keyamoon/svgxuse if needed.*
 
 ### Authors & Sponsors
 
@@ -15,7 +14,7 @@ check this and polyfills like this https://github.com/Keyamoon/svgxuse if needed
 
 ## Configuration
 
-The package manages icon collections that are defined via the Neos settings. It is possible to configure an 
+The package manages icon collections that are defined via Neos settings. It is possible to configure an 
 collection from a `path` or by referenceing each `item` individually.
 
 ```yaml
