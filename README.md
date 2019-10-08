@@ -120,7 +120,7 @@ prototype(Vendor.Site:Component.SvgIcon) < prototype(Neos.Fusion:Component) {
 
     renderer = Sitegeist.Stampede:Icon {
         collection = ${props.collection}
-        icon = ${props.identifier}
+        icon = ${props.icon}
         class = "svgIcon"
         style = null
     }
