@@ -51,7 +51,7 @@ class SvgController extends ActionController
         }
 
         if ($result) {
-            $this->response->setHeader('Content-Type', 'image/svg+xml');
+            $this->response->setContentType('image/svg+xml');
             return $result;
         } else {
             $this->response->setStatusCode('404');
