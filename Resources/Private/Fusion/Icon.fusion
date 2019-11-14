@@ -16,7 +16,6 @@ prototype(Sitegeist.Stampede:Icon) < prototype(Neos.Fusion:Component) {
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
                     viewBox="0 0 512 512"
-                    xml:space="preserve"
                     class={props.class}
                     style={props.style}
                 >
