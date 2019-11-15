@@ -5,6 +5,7 @@ prototype(Sitegeist.Stampede:Icon) < prototype(Neos.Fusion:Component) {
     class = null
     style = 'fill: currentColor; height: 1em;'
     inline = false
+    viewBox= '0 0 512 512'
 
     renderer = Neos.Fusion:Case {
         @if.has = ${props.collection && props.icon}
@@ -15,7 +16,7 @@ prototype(Sitegeist.Stampede:Icon) < prototype(Neos.Fusion:Component) {
                     version="1.1"
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 0 512 512"
+                    viewBox={props.viewBox}
                     xml:space="preserve"
                     class={props.class}
                     style={props.style}
