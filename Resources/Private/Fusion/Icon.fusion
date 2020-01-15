@@ -10,7 +10,7 @@ prototype(Sitegeist.Stampede:Icon) < prototype(Neos.Fusion:Component) {
     renderer = Neos.Fusion:Case {
         @if.has = ${props.collection && props.icon}
         sprite {
-            condition = ${props.inline == false}
+            condition = ${!props.inline}
             renderer = afx`
                 <svg
                     version="1.1"
@@ -29,7 +29,7 @@ prototype(Sitegeist.Stampede:Icon) < prototype(Neos.Fusion:Component) {
         }
 
         inline {
-            condition = ${props.inline == true}
+            condition = true
             renderer = afx`
                 <Neos.Fusion:Augmenter
                     class={props.class}
