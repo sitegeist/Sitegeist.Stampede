@@ -36,7 +36,7 @@ class SvgController extends ActionController
         if ($this->configuration['enableCache'] && $this->svgSpriteCache->has($collection)) {
             $result = $this->svgSpriteCache->get($collection);
             if ($result) {
-                $this->response->setHeader('Content-Type', 'image/svg+xml');
+                $this->response->setContentType('image/svg+xml');
                 return $result;
             } else {
                 $this->response->setStatusCode('404');
