@@ -28,6 +28,14 @@ class SvgController extends ActionController
     protected $configuration;
 
     /**
+     * A list of IANA media types which are supported by this controller
+     *
+     * @var array
+     * @see http://www.iana.org/assignments/media-types/index.html
+     */
+    protected $supportedMediaTypes = ['image/svg+xml'];
+
+    /**
      * @param string $collection
      * @return string
      */
