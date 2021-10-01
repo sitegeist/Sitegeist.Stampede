@@ -52,7 +52,8 @@ class IconDataSource extends AbstractDataSource
                     'group' => $iconCollection->getLabel(),
                     'value' => $iconCollection->getIdentifier() . ':' . $icon->getIdentifier(),
                     'icon' => $iconCollection->getIdentifier() . ':' . $icon->getIdentifier(),
-                    'label' => $icon->getLabel()
+                    'label' => $icon->getLabel(),
+                    'preview' => 'data:image/svg+xml;utf8,' . $icon->getSvg()
                 ];
             }
         }
