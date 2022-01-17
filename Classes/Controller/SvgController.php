@@ -58,6 +58,10 @@ class SvgController extends ActionController
             $this->svgSpriteCache->set($collection, $result);
         }
 
+        if ($this->configuration['publicCacheLifetime']) {
+            $this->response->addHttpHeader('Cache-Control', 'public, max-age=' . $this->configuration['publicCacheLifetime']);
+        }
+
         if ($result) {
             $this->response->setContentType('image/svg+xml');
             return $result;

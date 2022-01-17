@@ -54,6 +54,15 @@ Sitegeist:
     enableCache: false
 ```  
 
+The svg sprite sheet will get a cache-control header in Production context. You can adjust the value or disable this
+via setting:
+
+```yaml
+Sitegeist:
+  Stampede:
+      publicCacheLifetime: 86400
+```  
+
 A custom data source is included to allow editors to select icons in the Neos Inspector: 
 ```yaml
 'Vendor.Site:NodeType': 
