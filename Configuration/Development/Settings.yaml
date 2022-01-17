@@ -1,3 +1,4 @@
 Sitegeist:
   Stampede:
     enableCache: false
+    publicCacheLifetime: null

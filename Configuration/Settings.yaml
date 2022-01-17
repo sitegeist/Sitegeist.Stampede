@@ -1,8 +1,9 @@
 Sitegeist:
   Stampede:
     enableCache: true
+    publicCacheLifetime: 86400
     collections: []
-            
+
   Silhouettes:
     properties:
       stampede:
