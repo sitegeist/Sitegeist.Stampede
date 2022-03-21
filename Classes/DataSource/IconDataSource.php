@@ -53,7 +53,7 @@ class IconDataSource extends AbstractDataSource
                     'value' => $iconCollection->getIdentifier() . ':' . $icon->getIdentifier(),
                     'icon' => $iconCollection->getIdentifier() . ':' . $icon->getIdentifier(),
                     'label' => $icon->getLabel(),
-                    'preview' => 'data:image/svg+xml;utf8,' . $icon->getSvg()
+                    'preview' => 'data:image/svg+xml;base64,' . base64_encode($icon->getSvg())
                 ];
             }
         }
