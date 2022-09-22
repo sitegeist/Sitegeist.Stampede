@@ -39,18 +39,13 @@ class IconCollection
                 $label = $name;
                 $this->icons[$name] = new Icon($name, $label, $svgFile);
             }
+            ksort($this->icons);
         } elseif (array_key_exists('items', $collectionConfiguration) && is_array($collectionConfiguration['items'])) {
             foreach ($collectionConfiguration['items'] as $name => $itemConfiguration) {
                 $label = $itemConfiguration['label'] ?? $name;
                 if (array_key_exists('path', $itemConfiguration) && file_exists( $itemConfiguration['path'])) {
                     $this->icons[$name] = new Icon($name, $label, $itemConfiguration['path']);
                 }
-            }
-        }
-        if(array_key_exists('ordering', $collectionConfiguration)) {
-            switch ($collectionConfiguration['ordering']) {
-                case 'numerical':
-                    ksort($this->icons);
             }
         }
     }
