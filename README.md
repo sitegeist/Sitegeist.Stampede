@@ -94,6 +94,9 @@ prototype(Vendor.Site:Component.SvgIcon) < prototype(Neos.Neos:ContentComponent)
     }
 }
 ```
+### Mixins, Presets, Silhouettes
+
+The package contains the Mixin `Sitegeist.Silhouette:Mixin.Icon` and the property-preset / silhouette `stampede.icon`.
 
 ## Fusion
 

@@ -3,8 +3,8 @@
     "type": "neos-package",
     "name": "sitegeist/stampede",
     "require": {
-        "neos/fusion": "^4.3 || ^5.0 || ^7.0 || ^8.0 || dev-master",
-        "neos/fusion-afx": "^1.3 || ^7.0 || ^8.0 || dev-master"
+        "neos/fusion": "^7.0 || ^8.0 || dev-master",
+        "neos/fusion-afx": "^7.0 || ^8.0 || dev-master"
     },
     "license": "GPL-3.0-or-later",
     "suggest": {
