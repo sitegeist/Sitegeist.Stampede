@@ -4,6 +4,8 @@ Sitegeist:
     publicCacheLifetime: 86400
     collections: []
 
+  # Silhuettes are deprecated the core presets should be used
+  # instead. This will be removed in a future release
   Silhouettes:
     properties:
       stampede:
@@ -18,13 +20,25 @@ Sitegeist:
               editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
               editorOptions:
                 dataSourceIdentifier: 'sitegeist-stampede-icons'
-                dataSourceAdditionalData:
-                  collections: ['foo', 'bar']
+
 Neos:
   Neos:
     fusion:
       autoInclude:
         Sitegeist.Stampede: true
+    nodeTypes:
+      presets:
+        properties:
+          stampede:
+            icon:
+              type: string
+              defaultValue: ''
+              ui:
+                label: 'Icon'
+                inspector:
+                  editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+                  editorOptions:
+                    dataSourceIdentifier: 'sitegeist-stampede-icons'
   Fusion:
     defaultContext:
       Stampede: Sitegeist\Stampede\Eel\IconHelper
@@ -33,4 +47,3 @@ Neos:
       routes:
         'Sitegeist.Stampede':
           position: 'before Neos.Neos'
-

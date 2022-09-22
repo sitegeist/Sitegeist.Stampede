@@ -1,0 +1,15 @@
+Sitegeist.Stampede:Mixin.Icon:
+  abstract: true
+  ui:
+    inspector:
+      groups:
+        stampede:
+          icon: icons
+          label: "Icon"
+  properties:
+    icon:
+      ui:
+        inspector:
+          group: stampede
+      options:
+        preset: 'stampede.icon'
