@@ -47,6 +47,12 @@ class IconCollection
                 }
             }
         }
+        if(array_key_exists('ordering', $collectionConfiguration)) {
+            switch ($collectionConfiguration['ordering']) {
+                case 'numerical':
+                    ksort($this->icons);
+            }
+        }
     }
 
     /**
