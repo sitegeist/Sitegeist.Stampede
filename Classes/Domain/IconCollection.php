@@ -39,6 +39,7 @@ class IconCollection
                 $label = $name;
                 $this->icons[$name] = new Icon($name, $label, $svgFile);
             }
+            ksort($this->icons);
         } elseif (array_key_exists('items', $collectionConfiguration) && is_array($collectionConfiguration['items'])) {
             foreach ($collectionConfiguration['items'] as $name => $itemConfiguration) {
                 $label = $itemConfiguration['label'] ?? $name;
