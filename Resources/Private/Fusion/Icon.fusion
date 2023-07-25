@@ -10,7 +10,7 @@ prototype(Sitegeist.Stampede:Icon) < prototype(Neos.Fusion:Component) {
     viewBox= '0 0 512 512'
 
     @private {
-        collectionAndIcon = ${props.identifier ? String.split(props.identifier, ':', 2)[0] : [props.collection, props.icon]}
+        collectionAndIcon = ${props.identifier ? String.split(props.identifier, ':', 2) : [props.collection, props.icon]}
     }
 
     renderer = Neos.Fusion:Case {
