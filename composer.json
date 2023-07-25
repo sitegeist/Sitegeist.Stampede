@@ -1,10 +1,9 @@
 {
-    "description": "svg-sprite icons for neos",
+    "description": "svg-sprite icons for Neos",
     "type": "neos-package",
     "name": "sitegeist/stampede",
     "require": {
-        "neos/fusion": "^7.0 || ^8.0 || dev-master",
-        "neos/fusion-afx": "^7.0 || ^8.0 || dev-master"
+        "neos/fusion": "^8.3 || ^9.0 || dev-master"
     },
     "license": "GPL-3.0-or-later",
     "suggest": {
