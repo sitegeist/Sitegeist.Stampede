@@ -1,14 +1,20 @@
 prototype(Sitegeist.Stampede:Icon) < prototype(Neos.Fusion:Component) {
 
+    identifier = null
     collection = null
     icon = null
+
     class = null
     style = 'fill: currentColor; height: 1em;'
     inline = false
     viewBox= '0 0 512 512'
 
+    @private {
+        collectionAndIcon = ${props.identifier ? String.split(props.identifier, ':', 2)[0] : [props.collection, props.icon]}
+    }
+
     renderer = Neos.Fusion:Case {
-        @if.has = ${props.collection && props.icon}
+        @if.has = ${private.collectionAndIcon[0] && private.collectionAndIcon[1]}
         sprite {
             condition = ${!props.inline}
             renderer = afx`
@@ -21,8 +27,8 @@ prototype(Sitegeist.Stampede:Icon) < prototype(Neos.Fusion:Component) {
                     style={props.style}
                 >
                     <use>
-                        <Neos.Fusion:UriBuilder @path='attributes.xlink:href' package="Sitegeist.Stampede" controller="Svg" action="sprite" arguments={{collection:props.collection}} additionalParams={SitegeistKlarSchiffCacheBuster ? {cb:SitegeistKlarSchiffCacheBuster.get()} : null} section={props.icon} />
-                        <Neos.Fusion:UriBuilder @path='attributes.href' package="Sitegeist.Stampede" controller="Svg" action="sprite" arguments={{collection:props.collection}} additionalParams={SitegeistKlarSchiffCacheBuster ? {cb:SitegeistKlarSchiffCacheBuster.get()} : null} section={props.icon} />
+                        <Neos.Fusion:UriBuilder @path='attributes.xlink:href' package="Sitegeist.Stampede" controller="Svg" action="sprite" arguments={{collection:private.collectionAndIcon[0]}} additionalParams={SitegeistKlarSchiffCacheBuster ? {cb:SitegeistKlarSchiffCacheBuster.get()} : null} section={private.collectionAndIcon[1]} />
+                        <Neos.Fusion:UriBuilder @path='attributes.href' package="Sitegeist.Stampede" controller="Svg" action="sprite" arguments={{collection:private.collectionAndIcon[0]}} additionalParams={SitegeistKlarSchiffCacheBuster ? {cb:SitegeistKlarSchiffCacheBuster.get()} : null} section={private.collectionAndIcon[1]} />
                     </use>
                 </svg>
             `
@@ -35,7 +41,7 @@ prototype(Sitegeist.Stampede:Icon) < prototype(Neos.Fusion:Component) {
                     class={props.class}
                     style={props.style}
                 >
-                    {Stampede.icon(props.collection, props.icon).svg}
+                    {Stampede.icon(private.collectionAndIcon[0], private.collectionAndIcon[1]).svg}
                 </Neos.Fusion:Augmenter>
             `
         }
