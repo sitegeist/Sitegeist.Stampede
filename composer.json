@@ -3,7 +3,7 @@
     "type": "neos-package",
     "name": "sitegeist/stampede",
     "require": {
-        "neos/fusion": "^8.3 || ^9.0 || dev-master"
+        "neos/fusion": "^9.0 || dev-master"
     },
     "license": "GPL-3.0-or-later",
     "suggest": {
