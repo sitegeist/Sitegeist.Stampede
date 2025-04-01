@@ -1,9 +1,12 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Sitegeist\Stampede\DataSource;
 
+use Neos\ContentRepository\Core\Projection\ContentGraph\Node;
 use Neos\Flow\Annotations as Flow;
 use Neos\Neos\Service\DataSource\AbstractDataSource;
-use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Sitegeist\Stampede\Domain\IconCollection;
 use Sitegeist\Stampede\Domain\IconCollectionRepository;
 
@@ -23,11 +26,11 @@ class IconDataSource extends AbstractDataSource
     /**
      * Get data
      *
-     * @param NodeInterface $node The node that is currently edited (optional)
-     * @param array $arguments Additional arguments (key / value)
-     * @return array JSON serializable data
+     * @param Node $node The node that is currently edited (optional)
+     * @param array<string|int,string> $arguments Additional arguments (key / value)
+     * @return array<string|int,array<string,string>> JSON serializable data
      */
-    public function getData(NodeInterface $node = null, array $arguments = [])
+    public function getData(Node $node = null, array $arguments = []): array
     {
         $result = [];
 
