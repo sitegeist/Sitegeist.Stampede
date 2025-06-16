@@ -44,6 +44,7 @@ prototype(Sitegeist.Stampede:Icon) < prototype(Neos.Fusion:Component) {
                     {Stampede.icon(private.collectionAndIcon[0], private.collectionAndIcon[1]).svg}
                 </Neos.Fusion:Augmenter>
             `
+            renderer.@process.removeXMLDeclaration = ${String.replace(value,'<?xml version="1.0" encoding="UTF-8"?>', '')}
         }
     }
 }
