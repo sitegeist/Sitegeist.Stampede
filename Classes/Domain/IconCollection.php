@@ -22,6 +22,11 @@ class IconCollection
     protected $icons = [];
 
     /**
+     * @var string[]
+     */
+    protected $requiredIconIdentifiers = [];
+
+    /**
      * IconCollection constructor.
      * @param string $name
      * @param array $collectionConfiguration
@@ -30,6 +35,7 @@ class IconCollection
     {
         $this->identifier = $identifier;
         $this->label = $collectionConfiguration['label'] ?? $identifier;
+        $this->requiredIconIdentifiers = $collectionConfiguration['required'] ?? [];
 
         if (array_key_exists('path', $collectionConfiguration)) {
             $path = $collectionConfiguration['path'] ;
@@ -75,6 +81,14 @@ class IconCollection
     }
 
     /**
+     * @return string[]
+     */
+    public function getRequiredIconIdentifiers(): array
+    {
+        return $this->requiredIconIdentifiers;
+    }
+
+    /**
      * @return Icon[]
      */
     public function findAll(): array
@@ -89,5 +103,19 @@ class IconCollection
     public function findOneByIdentifier($name): ?Icon
     {
         return $this->icons[$name] ?? null;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function findMissingIconIdentifiers(): array
+    {
+        $result = [];
+        foreach ($this->requiredIconIdentifiers as $requiredIconIdentifier) {
+            if (!array_key_exists($requiredIconIdentifier, $this->icons)) {
+                $result[] = $requiredIconIdentifier;
+            }
+        }
+        return $result;
     }
 }
