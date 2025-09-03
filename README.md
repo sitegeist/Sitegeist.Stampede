@@ -29,6 +29,8 @@ Sitegeist:
       default: 
         label: "Default Collection"
         path: resource://Vendor.Site/Private/Icons
+        # required icons, is used for verifyAll command
+        required: ['up', 'down']        
 
       #
       # Collections with explicit items allow to configure the path and label
@@ -79,6 +81,10 @@ A custom data source is included to allow editors to select icons in the Neos In
               # can be configured. By default all collections will be available   
               collections: ['example']
 ```
+### CLI Commands 
+
+- `./flow iconcollection:list` Will show a list of all collections with label and require icons
+- `./flow iconcollection:verifyAll` Will verify that each collection has all required icons. Otherwise the missing icons are reported and error code is returned.
 
 ### Mixins, Presets, Silhouettes
 
