@@ -26,11 +26,11 @@ class IconDataSource extends AbstractDataSource
     /**
      * Get data
      *
-     * @param Node $node The node that is currently edited (optional)
+     * @param Node|null $node The node that is currently edited (optional)
      * @param array<string|int,string> $arguments Additional arguments (key / value)
      * @return array<string|int,array<string,string>> JSON serializable data
      */
-    public function getData(Node $node = null, array $arguments = []): array
+    public function getData(?Node $node = null, array $arguments = []): array
     {
         $result = [];
 
